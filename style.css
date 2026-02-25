@@ -34,3 +34,11 @@ body {
     display: grid;
     grid-template-columns: repeat(3,1fr);
 }
+
+.mole{
+  display: none;
+}
+
+.player.active .mole{
+  display: block;
+}
