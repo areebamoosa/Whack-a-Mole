@@ -1,29 +1,57 @@
 let players = document.querySelectorAll(".player");
+let score = document.getElementById("score");
+let timer = document.getElementById("timer");
 
+let gameScore = 0;
+let timeLeft = 30;
 let lastRandom;
 
-function game () {
-    setInterval (() => {
-        // Random Player becomes visible
-        players.forEach( player => {
-            player.classList.remove("active");
-        })
-        let random; 
+players.forEach((player) => {
+  player.addEventListener("click", () => {
+    if (player.classList.contains("active")) {
+      gameScore++;
+      score.textContent = gameScore;
+      player.classList.remove("active");
+    }
+  });
+});
 
-        do {
-            random = Math.floor(Math.random() * players.length);
-        } while ( random === lastRandom)
-        
-        players[random].classList.add("active");
+function game() {
+  let countdown = setInterval(() => {
+    timeLeft--;
 
-        setTimeout(() => {
-            // That random player disappears after a short period of time
-            players[random].classList.remove("active")
-        }, 500);
+    timer.textContent = `Time Left : ${timeLeft}`;
 
-        lastRandom = random;
+    if (timeLeft === 0) {
+      clearInterval(countdown);
+      clearInterval(gameInterval);
+    }
+  }, 1000);
 
-    }, 1000)
+  let gameInterval = setInterval(() => {
+    players.forEach((player) => {
+      // Removing active class from all players initially
+      player.classList.remove("active");
+    });
+
+    let random;
+
+    do {
+      random = Math.floor(Math.random() * players.length);
+    } while (random === lastRandom);
+
+    // Enabling active class only on one random player
+    players[random].classList.add("active");
+
+    setTimeout(() => {
+      // That random player disappears after given period of time
+      players[random].classList.remove("active");
+    }, 1000);
+
+    lastRandom = random;
+  }, 1000);
 }
 
-game();
+timer.addEventListener("click", () => {
+  game();
+});
