@@ -2,6 +2,9 @@ let players = document.querySelectorAll(".player");
 let score = document.getElementById("score");
 let timer = document.getElementById("timer");
 
+let gameSound = new Audio("assets/Sounds/Game-sound.mp3");
+let missSound = new Audio("assets/Sounds/Miss-sound.mp3");
+
 let gameScore = 0;
 let timeLeft = 30;
 let lastRandom;
@@ -19,7 +22,6 @@ players.forEach((player) => {
 function game() {
   let countdown = setInterval(() => {
     timeLeft--;
-
     timer.textContent = `Time Left : ${timeLeft}`;
 
     if (timeLeft === 0) {
@@ -29,11 +31,6 @@ function game() {
   }, 1000);
 
   let gameInterval = setInterval(() => {
-    players.forEach((player) => {
-      // Removing active class from all players initially
-      player.classList.remove("active");
-    });
-
     let random;
 
     do {
@@ -44,9 +41,18 @@ function game() {
     players[random].classList.add("active");
 
     setTimeout(() => {
+      if (players[random].classList.contains("active")) {
+        missSound.currentTime = 0;
+        missSound.play();
+
+        if (gameScore > 0) {
+          gameScore--;
+          score.textContent = gameScore;
+        }
+      }
       // That random player disappears after given period of time
       players[random].classList.remove("active");
-    }, 1000);
+    }, 600);
 
     lastRandom = random;
   }, 1000);
@@ -54,4 +60,6 @@ function game() {
 
 timer.addEventListener("click", () => {
   game();
+  gameSound.currentTime = 0;
+  gameSound.play();
 });
