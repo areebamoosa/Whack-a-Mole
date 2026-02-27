@@ -1,20 +1,16 @@
 body {
   background-color: #ffc600;
 }
-
 .title {
   font-family: "Amatic SC", cursive;
   font-size: 2.5rem;
   font-weight: 700;
-  line-height: 100px;
   color: rgb(0, 0, 0);
-
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
 }
-
 .main {
   margin-top: 100px;
   display: flex;
@@ -23,6 +19,12 @@ body {
   justify-content: center;
 }
 
+.players {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 200px;
+  gap: 80px;
+}
 .player {
   display: flex;
   flex-direction: column;
@@ -30,15 +32,70 @@ body {
   align-items: center;
 }
 
-.players{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-}
-
-.mole{
+.mole {
   display: none;
+  width: 200px;
+  height: 200px;
+}
+.dirt {
+  width: 250px;
+  height: 200px;
 }
 
-.player.active .mole{
+.player.active .mole {
   display: block;
 }
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+.btn {
+  width: 200px;
+  height: 70px;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  font-family: "Actor", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.btn:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+  transition: 0.2s ease;
+}
+
+.greenBtn {
+  background-color: #4caf51;
+}
+.greenBtn:hover {
+  background-color: #43a047;
+}
+.greenBtn.expanded {
+  width: 400px;
+}
+.redBtn {
+  background-color: #fe4b49;
+}
+.redBtn:hover {
+  background-color: #e84342;
+}
+.score {
+  font-family: "Amatic SC", cursive;
+  font-size: 5.5rem;
+  border: none;
+  background-color: #ffd152;
+  border-radius: 10px;
+  height: 120px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

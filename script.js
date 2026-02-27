@@ -1,6 +1,7 @@
 let players = document.querySelectorAll(".player");
 let score = document.getElementById("score");
 let timer = document.getElementById("timer");
+let greenBtn = document.querySelector(".greenBtn");
 
 let gameSound = new Audio("assets/Sounds/Game-sound.mp3");
 let missSound = new Audio("assets/Sounds/Miss-sound.mp3");
@@ -19,25 +20,55 @@ players.forEach((player) => {
   });
 });
 
+// function game() {
+//   let countdown = setInterval(() => {
+//     timeLeft--;
+//     timer.textContent = `Time Left : ${timeLeft}S`;
+
+//     if (timeLeft === 0) {
+//       clearInterval(countdown);
+//       clearInterval(gameInterval);
+//     }
+//   }, 1000);
+
+//   let gameInterval = setInterval(() => {
+//     let random;
+
+//     do {
+//       random = Math.floor(Math.random() * players.length);
+//     } while (random === lastRandom);
+
+//     // Enabling active class only on one random player
+//     players[random].classList.add("active");
+
+//     setTimeout(() => {
+//       if (players[random].classList.contains("active")) {
+//         missSound.currentTime = 0;
+//         missSound.play();
+
+//         if (gameScore > 0) {
+//           gameScore--;
+//           score.textContent = gameScore;
+//         }
+//       }
+//       // That random player disappears after given period of time
+//       players[random].classList.remove("active");
+//     }, 800);
+
+//     lastRandom = random;
+//   }, 1000);
+// }
+
+
 function game() {
-  let countdown = setInterval(() => {
-    timeLeft--;
-    timer.textContent = `Time Left : ${timeLeft}`;
 
-    if (timeLeft === 0) {
-      clearInterval(countdown);
-      clearInterval(gameInterval);
-    }
-  }, 1000);
-
-  let gameInterval = setInterval(() => {
+  function activateMole() {
     let random;
 
     do {
       random = Math.floor(Math.random() * players.length);
     } while (random === lastRandom);
 
-    // Enabling active class only on one random player
     players[random].classList.add("active");
 
     setTimeout(() => {
@@ -50,11 +81,27 @@ function game() {
           score.textContent = gameScore;
         }
       }
-      // That random player disappears after given period of time
+
       players[random].classList.remove("active");
-    }, 600);
+    }, 800);
 
     lastRandom = random;
+  }
+
+  activateMole();
+
+  let gameInterval = setInterval(() => {
+    activateMole();
+  }, 1000);
+
+  let countdown = setInterval(() => {
+    timeLeft--;
+    timer.textContent = `Time Left : ${timeLeft}S`;
+
+    if (timeLeft === 0) {
+      clearInterval(countdown);
+      clearInterval(gameInterval);
+    }
   }, 1000);
 }
 
@@ -62,4 +109,8 @@ timer.addEventListener("click", () => {
   game();
   gameSound.currentTime = 0;
   gameSound.play();
+});
+
+greenBtn.addEventListener("click", () => {
+  greenBtn.classList.add("expanded");
 });
