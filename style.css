@@ -1,5 +1,19 @@
 body {
   background-color: #ffc600;
+  overflow-x: hidden;
+  margin: 0;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .title {
   font-family: "Amatic SC", cursive;
@@ -10,13 +24,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 15px;
-}
-.main {
-  margin-top: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin-top: 50px;
 }
 
 .players {
@@ -99,3 +107,52 @@ body {
   justify-content: center;
 }
 
+.footer {
+  margin-top: 280px;
+  background-color: #262626;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  height: 100px;
+  padding: 15px;
+  font-family: "Actor", sans-serif;
+}
+
+.cred {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+.emojis {
+  font-size: 2.5rem;
+  display: flex;
+  gap: 10px;
+  color: white;
+}
+
+.footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.visit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+.visit p,
+.visit a {
+  color: red;
+}
+
+.visit:hover p,
+.visit:hover a {
+  color: #ffc600;
+  text-decoration: underline;
+}
