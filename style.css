@@ -224,3 +224,21 @@ body {
   color: #ffc600;
   white-space: nowrap;
 }
+
+.game-over {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  background-color: #382806;
+  color: white;
+  width: 700px;
+  height: 500px;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.game-over.active {
+  display: block;
+}

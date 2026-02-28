@@ -5,13 +5,19 @@ let greenBtn = document.querySelector(".greenBtn");
 let rules = document.getElementById("rules");
 let popup = document.querySelector(".popup");
 let closePopup = document.querySelector(".close-popup");
+let finalScore = document.querySelector("#final-score");
+let highScore = document.querySelector("#highest-score");
+let gameOver = document.querySelector(".game-over");
+let closeOver = document.querySelector(".close-over");
 
 let gameSound = new Audio("assets/Sounds/Game-sound.mp3");
 let missSound = new Audio("assets/Sounds/Miss-sound.mp3");
 
-let gameScore = 0;
 let timeLeft = 30;
 let lastRandom;
+
+let gameScore = 0;
+let highestScore;
 
 players.forEach((player) => {
   player.addEventListener("click", () => {
@@ -22,45 +28,6 @@ players.forEach((player) => {
     }
   });
 });
-
-// function game() {
-//   let countdown = setInterval(() => {
-//     timeLeft--;
-//     timer.textContent = `Time Left : ${timeLeft}S`;
-
-//     if (timeLeft === 0) {
-//       clearInterval(countdown);
-//       clearInterval(gameInterval);
-//     }
-//   }, 1000);
-
-//   let gameInterval = setInterval(() => {
-//     let random;
-
-//     do {
-//       random = Math.floor(Math.random() * players.length);
-//     } while (random === lastRandom);
-
-//     // Enabling active class only on one random player
-//     players[random].classList.add("active");
-
-//     setTimeout(() => {
-//       if (players[random].classList.contains("active")) {
-//         missSound.currentTime = 0;
-//         missSound.play();
-
-//         if (gameScore > 0) {
-//           gameScore--;
-//           score.textContent = gameScore;
-//         }
-//       }
-//       // That random player disappears after given period of time
-//       players[random].classList.remove("active");
-//     }, 800);
-
-//     lastRandom = random;
-//   }, 1000);
-// }
 
 function game() {
   function activateMole() {
@@ -102,9 +69,24 @@ function game() {
     if (timeLeft === 0) {
       clearInterval(countdown);
       clearInterval(gameInterval);
+
+      highestScore = Number(localStorage.getItem("highestScore")) || 0;
+
+      if (gameScore > highestScore) {
+        localStorage.setItem("highestScore", gameScore);
+        highestScore = gameScore;
+      }
+
+      finalGameScore();
     }
   }, 1000);
 }
+
+const finalGameScore = () => {
+  gameOver.classList.add("active");
+  finalScore.textContent = gameScore;
+  highScore.textContent = highestScore;
+};
 
 timer.addEventListener("click", () => {
   game();
@@ -122,4 +104,7 @@ rules.addEventListener("click", () => {
 
 closePopup.addEventListener("click", () => {
   popup.classList.remove("active");
+});
+closeOver.addEventListener("click", () => {
+  gameOver.classList.remove("active");
 });
