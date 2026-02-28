@@ -2,6 +2,9 @@ let players = document.querySelectorAll(".player");
 let score = document.getElementById("score");
 let timer = document.getElementById("timer");
 let greenBtn = document.querySelector(".greenBtn");
+let rules = document.getElementById("rules");
+let popup = document.querySelector(".popup");
+let closePopup = document.querySelector(".close-popup");
 
 let gameSound = new Audio("assets/Sounds/Game-sound.mp3");
 let missSound = new Audio("assets/Sounds/Miss-sound.mp3");
@@ -59,9 +62,7 @@ players.forEach((player) => {
 //   }, 1000);
 // }
 
-
 function game() {
-
   function activateMole() {
     let random;
 
@@ -113,4 +114,12 @@ timer.addEventListener("click", () => {
 
 greenBtn.addEventListener("click", () => {
   greenBtn.classList.add("expanded");
+});
+
+rules.addEventListener("click", () => {
+  popup.classList.add("active");
+});
+
+closePopup.addEventListener("click", () => {
+  popup.classList.remove("active");
 });
