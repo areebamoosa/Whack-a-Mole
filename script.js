@@ -13,10 +13,10 @@ let closeOver = document.querySelector(".close-over");
 let gameSound = new Audio("assets/Sounds/Game-sound.mp3");
 let missSound = new Audio("assets/Sounds/Miss-sound.mp3");
 
-let timeLeft = 30;
+let timeLeft;
 let lastRandom;
 
-let gameScore = 0;
+let gameScore;
 let highestScore;
 
 players.forEach((player) => {
@@ -30,6 +30,10 @@ players.forEach((player) => {
 });
 
 function game() {
+  timeLeft = 30;
+  gameScore = 0;
+  score.textContent = 0;
+
   function activateMole() {
     let random;
 
@@ -51,7 +55,7 @@ function game() {
       }
 
       players[random].classList.remove("active");
-    }, 800);
+    }, 900);
 
     lastRandom = random;
   }
@@ -78,6 +82,8 @@ function game() {
       }
 
       finalGameScore();
+      timer.disabled = false;
+      timer.textContent = "START!";
     }
   }, 1000);
 }
@@ -90,8 +96,9 @@ const finalGameScore = () => {
 
 timer.addEventListener("click", () => {
   game();
-  gameSound.currentTime = 0;
+  gameSound.currentTime = 3;
   gameSound.play();
+  timer.disabled = true;
 });
 
 greenBtn.addEventListener("click", () => {
