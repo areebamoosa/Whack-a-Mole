@@ -2,6 +2,7 @@ body {
   background-color: #ffc600;
   overflow-x: hidden;
   margin: 0;
+  font-family: "Bad Script", cursive;
 }
 * {
   margin: 0;
@@ -16,7 +17,8 @@ body {
   justify-content: center;
 }
 .title {
-  font-family: "Amatic SC", cursive;
+  font-family: "Bad Script", cursive;
+
   font-size: 2.5rem;
   font-weight: 700;
   color: rgb(0, 0, 0);
@@ -24,14 +26,14 @@ body {
   justify-content: center;
   align-items: center;
   gap: 15px;
-  margin-top: 50px;
+  margin-top: 90px;
 }
 
 .players {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-top: 200px;
-  gap: 80px;
+  margin-top: 110px;
+  gap: 50px;
 }
 
 .player {
@@ -104,7 +106,7 @@ body {
   background-color: #e84342;
 }
 .score {
-  font-family: "Amatic SC", cursive;
+  font-family: "Bad Script", cursive;
   font-size: 5.5rem;
   border: none;
   background-color: #ffd152;
@@ -117,23 +119,23 @@ body {
 }
 
 .footer {
-  margin-top: 280px;
+  margin-top: 170px;
   background-color: #262626;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 1.5rem;
-  height: 100px;
+  height: 130px;
   padding: 15px;
-  font-family: "Actor", sans-serif;
+  font-family: "Bad Script", cursive;
 }
 
 .cred {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3px;
+  gap: 10px;
 }
 
 .emojis {
@@ -192,7 +194,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .x {
@@ -204,21 +206,21 @@ body {
 }
 
 .textcontent {
-  margin-top: 90px;
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   gap: 15px;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .text {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  gap: 8px;
+
+  font-size: 1.6rem;
+  gap: 10px;
   white-space: wrap;
+  font-weight: bold;
 }
 .yellow {
   color: #ffc600;
@@ -230,21 +232,67 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: none;
   background-color: #382806;
   color: white;
   width: 700px;
   height: 500px;
   border-radius: 20px;
-  padding: 40px;
+  padding: 50px;
+
+  display: none;
 }
 
 .game-over.active {
   display: block;
 }
 
+.close-x {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 2rem;
+  cursor: pointer;
+  margin-right: 50px;
+  margin-top: 40px;
+}
+
+.game-title {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.game-score {
+  margin-top: 80px;
+  width: 100%;
+}
+.score-text {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 2rem;
+  margin: 20px 0;
+}
+.sizescore {
+  font-size: 2.5rem;
+}
 
 button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+.missed {
+  position: absolute;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  background-color: rgba(255, 0, 0, 0.8);
+  border-radius: 5px;
+  padding: 5px 10px;
+  top:50%;
+  left: 50%;
+  animation: fade 0.5s ease-in-out;
+  transform: translateY(-10px);
+}
+

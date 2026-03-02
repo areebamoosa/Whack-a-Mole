@@ -8,7 +8,7 @@ let closePopup = document.querySelector(".close-popup");
 let finalScore = document.querySelector("#final-score");
 let highScore = document.querySelector("#highest-score");
 let gameOver = document.querySelector(".game-over");
-let closeOver = document.querySelector(".close-over");
+let closeOver = document.querySelector(".close-x");
 
 let gameSound = new Audio("assets/Sounds/Game-sound.mp3");
 let missSound = new Audio("assets/Sounds/Miss-sound.mp3");
@@ -47,6 +47,7 @@ function game() {
       if (players[random].classList.contains("active")) {
         missSound.currentTime = 0;
         missSound.play();
+        missedAnimation(players[random]);
 
         if (gameScore > 0) {
           gameScore--;
@@ -92,6 +93,19 @@ const finalGameScore = () => {
   gameOver.classList.add("active");
   finalScore.textContent = gameScore;
   highScore.textContent = highestScore;
+};
+
+const missedAnimation = (player) => {
+  const hole = player.querySelector(".dirt");
+
+  const missText = document.createElement("div");
+  missText.textContent = "Missed";
+  missText.classList.add("missed");
+  hole.appendChild(missText);
+
+  setTimeout(() => {
+    hole.removeChild(missText);
+  }, 500);
 };
 
 timer.addEventListener("click", () => {

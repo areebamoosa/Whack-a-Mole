@@ -8,16 +8,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
-      rel="stylesheet"
-    />
-    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
       integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="assets/Logo.png">
   </head>
   <body>
     <div class="main">
@@ -71,7 +72,7 @@
 
       <div class="cred">
         <p>Made with</p>
-        <span> <i class="fa-regular fa-heart"></i></span>
+        <span>❤️</span>
         <p>by A.M</p>
       </div>
 
@@ -125,22 +126,22 @@
     <!-- Game Over Popup Box -->
 
     <div class="game-over">
-      <div>
-        <i class="fa-solid fa-x close-over"></i>
-      </div>
+      <div class="game-content">
+        <i class="fa-solid fa-x close-x"></i>
 
-      <div>
-        <h1>Game Ended</h1>
-      </div>
+        <h1 class="game-title">Game Ended</h1>
 
-      <div>
-        <p>Your final score is</p>
-        <p id="final-score">0</p>
-      </div>
+        <div class="game-score">
+          <div class="score-text">
+            <p class="yellow">Your final score is :</p>
+            <p id="final-score" class="sizescore">0</p>
+          </div>
 
-      <div>
-        <p>Your highest score is</p>
-        <p id="highest-score">0</p>
+          <div class="score-text">
+            <p class="yellow">Your highest score is :</p>
+            <p id="highest-score" class="sizescore">0</p>
+          </div>
+        </div>
       </div>
     </div>
 
