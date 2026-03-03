@@ -56,8 +56,24 @@ body {
 .dirt {
   width: 250px;
   height: 200px;
-  position: absolute;
   bottom: -100px;
+  position: relative;
+}
+
+.missed {
+  position: absolute;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  background-color: rgba(255, 0, 0, 0.8);
+  border-radius: 5px;
+  padding: 5px 10px;
+  top: 50%;
+  left: 50%;
+  animation: fade 0.5s ease-in-out;
+  transform: translate(-50%, -50%);
+  z-index: 100;
 }
 
 .player.active .mole {
@@ -279,20 +295,6 @@ button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
-.missed {
-  position: absolute;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  background-color: rgba(255, 0, 0, 0.8);
-  border-radius: 5px;
-  padding: 5px 10px;
-  top: 50%;
-  left: 50%;
-  animation: fade 0.5s ease-in-out;
-  transform: translateY(-10px);
-}
 
 /* Responsiveness */
 
@@ -394,6 +396,11 @@ button:disabled {
   .sizescore {
     font-size: 1.5rem;
   }
+
+  .missed {
+    font-size: 18px;
+    padding: 4px 7px;
+  }
 }
 
 /* Responsiveness for mobile screens */
@@ -436,7 +443,6 @@ button:disabled {
   .btn {
     width: 100px;
     height: 40px;
-
     padding: 3px;
     font-size: 0.8rem;
   }
@@ -502,6 +508,11 @@ button:disabled {
   }
   .sizescore {
     font-size: 1.5rem;
+  }
+
+  .missed {
+    font-size: 14px;
+    padding: 3px 5px;
   }
 }
 

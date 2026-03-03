@@ -74,6 +74,8 @@ function game() {
     if (timeLeft === 0) {
       clearInterval(countdown);
       clearInterval(gameInterval);
+      gameSound.pause();
+      gameSound.currentTime = 0;
 
       highestScore = Number(localStorage.getItem("highestScore")) || 0;
 
@@ -96,15 +98,13 @@ const finalGameScore = () => {
 };
 
 const missedAnimation = (player) => {
-  const hole = player.querySelector(".dirt");
-
   const missText = document.createElement("div");
   missText.textContent = "Missed";
   missText.classList.add("missed");
-  hole.appendChild(missText);
+  player.appendChild(missText);
 
   setTimeout(() => {
-    hole.removeChild(missText);
+    missText.remove();
   }, 500);
 };
 
@@ -128,4 +128,5 @@ closePopup.addEventListener("click", () => {
 });
 closeOver.addEventListener("click", () => {
   gameOver.classList.remove("active");
+  score.textContent = 0;
 });
