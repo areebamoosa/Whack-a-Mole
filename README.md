@@ -11,7 +11,7 @@ The game is built using `HTML`, `CSS`, and `JavaScript`, providing a simple yet 
 
 ### How to Play 🕹️
 
-1. **[Go here](https://areebamoosa.github.io/Whack-a-Mole)** to access the game.
+1. **[Go here](https://whack-a-mole-delta-nine.vercel.app)** to access the game.
 1. **Press the "Start" button** to begin the game.
 1. **Moles will randomly pop up** from the holes on the screen.
 1. **Click on as many moles as you can** to increase your score!
